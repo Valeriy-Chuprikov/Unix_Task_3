@@ -20,7 +20,7 @@ check_dashed_directory () {
 
 for arg in "$@"
 do
-	if [[ $s_small = 1 ]]
+	if [[ $s_small -eq 1 ]]
 	then
 		minsize=$arg
 		s_small=0
@@ -29,7 +29,7 @@ do
 
 	case "$arg" in
 		--)
-			if [[ $sep = 0 ]]
+			if [[ $sep -eq 0 ]]
 			then
 				sep=1
 			else
@@ -38,7 +38,7 @@ do
 			;;
 			
 		--help)
-			if [[ $sep = 0 ]]
+			if [[ $sep -eq 0 ]]
 			then
 				echo "topsize.sh [--help] [-h] [-N] [-s minsize] [--] [dir...]"
 				echo "Команда выводит список отсортированных по убыванию размеров файлов заданных каталогов в dir..., если они не заданы, то поиск ведётся в текущем каталоге"
@@ -54,7 +54,7 @@ do
 			;;
 			
 		-h)
-			if [[ $sep = 0 ]]
+			if [[ $sep -eq 0 ]]
 			then
 				format+="h"
 			else
@@ -63,7 +63,7 @@ do
 			;;
 
 		-s)
-			if [[ $sep = 0 ]]
+			if [[ $sep -eq 0 ]]
 			then
 				s_small=1
 			else
@@ -72,7 +72,7 @@ do
 			;;
 
 		-*)
-			if [[ $sep = 0 ]]
+			if [[ $sep -eq 0 ]]
 			then
 				if ! [[ "${arg:1}" =~ ^[0-9]+$ ]]
 	       			then
@@ -99,7 +99,7 @@ do
 	esac
 done
 
-if [[ $error_was = 1 ]]
+if [[ $error_was -eq 1 ]]
 then
 	exit 1
 fi
